@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Author details</title>
+    <style>
+        * {
+            outline: 1px dotted red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="containter">
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="nav-item nav-link active" href="/">To Books</a>
+            <a class="nav-item nav-link" href="/authors">To Authors</a>
+        </nav>
+        <div class="row justify-content-center">
+            <div class="col-10">
+
+                <h1 class="row d-block">{{ chosen_author.first_name }} {{ chosen_author.last_name }}
+                </h1>
+                <p class="row display-4">Id : {{ chosen_author.id }}</p>
+                <p>Notes: {{ chosen_author.notes }}</p>
+
+
+                <p>Books the author wrote:</p>
+                <ul>
+                    {% for booksWritten in books_from_chosen_author %}
+                    <li>{{ booksWritten.title }}</li>
+                    {% endfor %}
+                </ul>
+
+                <form action="addBookToAuthor" method='POST'>
+                    {% csrf_token %}
+                    <input name="id_author" type='hidden' value="{{chosen_author.id}}">
+                    <select name="id_book">
+                        {% for book in books_we_can_add %}
+                        <option value="{{book.id}}">{{ book.title }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="add">
+                </form>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

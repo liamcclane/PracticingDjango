@@ -1,0 +1,11 @@
+inside the settings file in the project folder
+Performing system checks...
+
+inside the urls projects folder
+we are inside the urls function in dashboard
+System check identified no issues (0 silenced).
+November 08, 2019 - 16:35:38
+Django version 1.10, using settings 'books_n_authors.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+inside the settings file in the project folder

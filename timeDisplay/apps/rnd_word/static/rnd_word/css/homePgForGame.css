@@ -1,0 +1,37 @@
+* {
+    outline: 1px dotted red;
+    /* margin: 25px auto; */
+}
+input {
+    display: block;
+    border-radius: 1em;
+    box-shadow: 7px 7px 8px rgba(29, 28, 28, 0.795);
+    margin: 25px auto;
+    background-image: linear-gradient(bottom, green,rgb(25, 209, 25),green);
+}
+.wrapper {
+    /* background-color: teal; */
+    background-image: url('rnd_meme.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 800px;
+    max-width: 1100px;
+    text-align: center;
+    padding-top: 3em;
+    margin: 25px auto;
+}
+.box {
+    margin: 25px auto;
+    display: block;
+    width: max-content;
+    padding: 3em;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.603);
+    box-shadow: 7px 7px 8px rgba(29, 28, 28, 0.795);
+    border-radius: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.75em;
+}
+.box:first-child {
+    padding: 1em;
+}

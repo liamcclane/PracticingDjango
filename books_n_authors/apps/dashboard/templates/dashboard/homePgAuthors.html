@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Books and Authors assignment</title>
+    <style>
+        * {
+            outline: 1px dotted red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="containter">
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="nav-item nav-link active" href="/">To Books</a>
+            <a class="nav-item nav-link" href="/authors">To Authors</a>
+        </nav>
+
+
+        <div class="row justify-content-center">
+
+            <div class="col-5">
+
+                <h1>Add An Author</h1>
+
+                <form action="addAuthor" method="POST">
+                    {% csrf_token %}
+
+                    <p>create a new Author: must need first and last name</p>
+                    <p>First Name</p>
+                    <input type="text" name="first_name">
+                    <p>Last Name</p>
+                    <input type="text" name="last_name">
+
+                    <p>Notes/Fun facts: </p>
+                    <textarea name="notes"></textarea>
+                
+
+                    <input type="submit" class="btn btn-outline-secondary" name='key' value='add'>
+                </form>
+            </div> <!-- end of the first col-3 -->
+
+
+            <div class="col-3">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Author Id</th>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for singleAuthor in authors %}
+                        <tr>
+                            <td>{{ singleAuthor.id }}</td>
+                            <td>{{ singleAuthor.first_name }}  {{ singleAuthor.last_name }}</td>
+                            <td><a href="author/{{ singleAuthor.id }}">click me</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>

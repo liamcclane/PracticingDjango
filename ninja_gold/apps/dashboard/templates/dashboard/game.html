@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- importing bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Ninja Gold Game</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+</head>
+
+<body>
+    <div class="container border rounded p-4">
+        <div class="row pt-4 pb-2">
+            <div class="col-3">Your Gold coin count: {{ request.session.amount_of_gold }}</div>
+            <a href="destroy" class="btn btn-outline-danger">start the game over again</a>
+        </div>
+        <div class="row">
+
+            <div class="col border border-secondary rounded p-2 text-center m-1">
+                <h2 class="text-center m-2">Farm</h2>
+                <p class="text-center m-2">(earns 10-20 gold coins)</p>
+                <form action="process_money" method="POST">
+                    {% csrf_token %}
+                    <!-- <input type="hidden" name="location" value="farm"> -->
+                    <input type="submit" name='key' value="farm" class="btn btn-success m-2">
+                </form>
+            </div>
+            <div class="col border border-secondary rounded p-2 text-center m-1">
+                <h2 class="text-center m-2">Mine</h2>
+                <p class="text-center m-2">(earns 5-10 gold coins)</p>
+                <form action="process_money" method="POST">
+                    {% csrf_token %}
+                    <!-- <input type="hidden" name="location" value="mine"> -->
+                    <input type="submit" name='key' value="mine" class="btn btn-success m-2">
+                </form>
+
+            </div>
+            <div class="col border border-secondary rounded p-2 text-center m-1">
+                <h2 class="text-center m-2">Home Study</h2>
+                <p class="text-center m-2">(earns 2-5 gold coins)</p>
+                <form action="process_money" method="POST">
+                    {% csrf_token %}
+                    <!-- <input type="hidden" name="location" value="home"> -->
+                    <input type="submit" name='key' value='home' class="btn btn-success m-2">
+                </form>
+            </div>
+            <div class="col border border-secondary rounded p-2 text-center m-1">
+                <h2 class="text-center m-2">Casino</h2>
+                <p class="text-center m-2">(gambles +/- 50 gold coins)</p>
+                <form action="process_money" method="POST">
+                    {% csrf_token %}
+                    <!-- <input type="hidden" name="location" value="casino"> -->
+                    <input type="submit" name='key' value="gamble" class="btn btn-success m-2">
+                </form>
+            </div>
+
+        </div>
+        <!-- <form action="/process_money" method="POST" class="row pb-5 pt-5"> -->
+        <!-- <div class="row"> -->
+        <p class='mt-2 row'>Activites</p>
+        <div class="overflow-auto border rounded activitesBox">
+            <ul class="list-unstyled">
+                {% for i in request.session.output %}
+                    {% if i.1 > 0 %}
+                        <li class='ml-2 text-success'>
+                            {{i.0}}
+                        </li>
+                    {% endif %}
+
+                    {% if 0 > i.1 %}
+                        <li class='ml-2 text-danger'>
+                            {{i.0}}
+                        </li>
+                    {% endif %}
+
+                    {% if 0 == i.1 %}
+                        <li class='ml-2 text-secondary'>
+                            {{i.0}}
+                        </li>
+                    {% endif %}
+
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- </div> -->
+    </div>
+</body>
+
+</html>
