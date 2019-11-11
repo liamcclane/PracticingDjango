@@ -7,10 +7,13 @@ from apps.dashboard.models import *
     # can add authors
     # able to list all the authors on the correct template
     # able to view all the books on the correct template
-
-# things to work on
     # able to drop down all the author that are not assiciated with the already chosen book
     # able to drop down all the books that are not assiciated with the already chosen author
+
+# things to work on
+    # work on an edit page for both the authors and books
+    # give user options to add an author to a book when creating 
+        # we will have to ask or find out if the author is a brandnew author or not...
     # more css
     # maybe create an edit page for both books and authors
 
